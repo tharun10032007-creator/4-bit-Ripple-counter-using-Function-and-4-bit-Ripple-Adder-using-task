@@ -53,7 +53,44 @@ endmodule
 
 
 # Test Bench
+module rca_tb;
+    reg [3:0] A, B;
+    reg Cin;
+    wire [3:0] Sum;
+    wire Cout;
 
+    rca uut (
+        .A(A),
+        .B(B),
+        .Cin(Cin),
+        .Sum(Sum),
+        .Cout(Cout)
+    );
+
+    initial begin
+        A = 4'b0000;
+        B = 4'b0000;
+        Cin = 0;
+        #10 
+        A = 4'b0011; 
+        B = 4'b0101; 
+        Cin = 0;
+        #10 
+        A = 4'b1111; 
+        B = 4'b0001; 
+        Cin = 1;
+        #10 
+        A = 4'b1010; 
+        B = 4'b0101; 
+        Cin = 0;
+        #10 
+        A = 4'b1111; 
+        B = 4'b1111; 
+        Cin = 0;
+        #10 
+        $finish;
+    end
+endmodule
 # Output Waveform
 
 # 4 bit Ripple counter using Function
@@ -77,7 +114,27 @@ endmodule
 
 # Test Bench
 
+module ripple_counter_func_tb;
+    reg clk_t, rst_t;
+    wire [3:0] Q_t;
 
+    ripple_counter_func uut (
+        .clk(clk_t),
+        .rst(rst_t),
+        .Q(Q_t)
+    );
+
+    initial clk_t = 0;
+    always #5 clk_t = ~clk_t;
+
+    initial begin
+        rst_t = 1;
+        #15 
+        rst_t = 0;
+        #100 
+        $finish;
+    end
+endmodule
 # Output Waveform 
 
 
