@@ -53,8 +53,29 @@ endmodule
 
 
 # Test Bench
+module ripple_counter_func_tb;
+    reg clk_t, rst_t;
+    wire [3:0] Q_t;
 
+    ripple_counter_func uut (
+        .clk(clk_t),
+        .rst(rst_t),
+        .Q(Q_t)
+    );
+
+    initial clk_t = 0;
+    always #5 clk_t = ~clk_t;
+
+    initial begin
+        rst_t = 1;
+        #15 
+        rst_t = 0;
+        #100 
+        $finish;
+    end
+endmodule
 # Output Waveform
+<img width="837" height="271" alt="Screenshot 2025-10-03 115445" src="https://github.com/user-attachments/assets/ec78866f-f264-48e6-9925-0b86c678683a" />
 
 # 4 bit Ripple counter using Function
 // 4-bit Ripple Counter using Function
@@ -77,8 +98,29 @@ endmodule
 
 # Test Bench
 
+module ripple_counter_func_tb;
+    reg clk_t, rst_t;
+    wire [3:0] Q_t;
 
+    ripple_counter_func uut (
+        .clk(clk_t),
+        .rst(rst_t),
+        .Q(Q_t)
+    );
+
+    initial clk_t = 0;
+    always #5 clk_t = ~clk_t;
+
+    initial begin
+        rst_t = 1;
+        #15 
+        rst_t = 0;
+        #100 
+        $finish;
+    end
+endmodule
 # Output Waveform 
+![Uploading Screenshot 2025-10-03 115814.png…]()
 
 
 # Conclusion
